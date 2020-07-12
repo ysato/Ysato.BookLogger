@@ -1,0 +1,6 @@
+_artisan()
+{
+	COMPREPLY=(`php artisan list:forBash $COMP_LINE`)
+	return 0
+}
+complete -F _artisan artisan
