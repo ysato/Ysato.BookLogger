@@ -11,7 +11,7 @@
 * array [tickets.json](../schema/tickets.json)
 
 
-* [ticket.json]("../schema/ticket.json")
+* [ticket.json](../schema/ticket.json)
                 
 ## POST
 
