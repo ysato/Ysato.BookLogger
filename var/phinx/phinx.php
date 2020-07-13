@@ -6,10 +6,10 @@ require_once dirname(__DIR__, 2) . '/autoload.php';
 
 use Symfony\Component\Dotenv\Dotenv;
 
-(new Dotenv())->usePutenv()->loadEnv(dirname(__DIR__, 2) . '/.env');
+(new Dotenv())->loadEnv(dirname(__DIR__, 2) . '/.env');
 
-$development = new \PDO(getenv('DB_DSN'), getenv('DB_USER'), getenv('DB_PASS'));
-$test = new \PDO(getenv('DB_DSN') . '_test', getenv('DB_USER'), getenv('DB_PASS'));
+$development = new \PDO($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
+$test = new \PDO($_ENV['DB_DSN'] . '_test', $_ENV['DB_USER'], $_ENV['DB_PASS']);
 
 return [
     'paths' => [

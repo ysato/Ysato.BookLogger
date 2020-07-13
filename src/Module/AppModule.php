@@ -15,20 +15,19 @@ use Ray\Query\SqlQueryModule;
 use Symfony\Component\Dotenv\Dotenv;
 
 use function dirname;
-use function getenv;
 
 class AppModule extends AbstractAppModule
 {
     protected function configure(): void
     {
         $appDir = dirname(__DIR__, 2);
-        (new Dotenv())->usePutenv()->loadEnv($appDir . '/.env');
+        (new Dotenv())->loadEnv($appDir . '/.env');
         $this->install(
             new AuraSqlModule(
-                getenv('DB_DSN'),
-                getenv('DB_USER'),
-                getenv('DB_PASS'),
-                getenv('DB_SLAVE'),
+                $_ENV['DB_DSN'] . '_test',
+                $_ENV['DB_USER'],
+                $_ENV['DB_PASS'],
+                $_ENV['DB_SLAVE'],
             )
         );
         $this->install(new SqlQueryModule($appDir . '/var/sql'));
