@@ -1,7 +1,7 @@
 # API Doc
 
-* **Overview** This is the Tutorial2 REST API
-* **Issue** <a href="https://github.com/bearsunday/tutorial2/issues">https://github.com/bearsunday/tutorial2/issues</a>
+* **Overview** This is the BookLogger REST API
+* **Issue** <a href="https://github.com/ysato/Ysato.BookLogger/issues">https://github.com/ysato/Ysato.BookLogger/issues</a>
 
 ## Link Relations
 
@@ -9,10 +9,10 @@
 ## URIs
 
 * [/index](uri/index.md)
-* [/tickets/{id}](uri/ticket.md)
-* [/tickets](uri/tickets.md)
+* [/read-books/{id}](uri/read-book.md)
+* [/read-books](uri/read-books.md)
 
 ## Schemas
 
-* [ticket.json](schema/ticket.json) - Ticket
-* [tickets.json](schema/tickets.json) - Collection of Tickets
+* [read_book.json](schema/read_book.json) - ReadBook
+* [read_books.json](schema/read_books.json) - Collection of Read Books

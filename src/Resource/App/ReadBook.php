@@ -12,11 +12,11 @@ use Ray\Query\Annotation\Query;
 /**
  * @Cacheable()
  */
-class Ticket extends ResourceObject
+class ReadBook extends ResourceObject
 {
     /**
-     * @JsonSchema(schema="ticket.json")
-     * @Query("ticket_item_by_id", type="row")
+     * @JsonSchema(schema="read_book.json")
+     * @Query("read_book_item_by_id", type="row")
      */
     public function onGet(string $id): ResourceObject
     {

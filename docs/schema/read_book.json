@@ -1,0 +1,27 @@
+{
+  "$id": "https://ysato.github.io/Ysato.BookLogger/schema/read_book.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReadBook",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for a read book."
+    },
+    "isbn": {
+      "type": "string",
+      "description": "The unique identifier for a book",
+      "minLength": 10,
+      "maxLength": 13
+    },
+    "read_at": {
+      "description": "The date and time that the book was read",
+      "type": "string",
+      "format": "datetime"
+    }
+  },
+  "required": [
+    "isbn",
+    "read_at"
+  ]
+}

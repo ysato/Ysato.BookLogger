@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class Ticket extends AbstractMigration
+final class ReadBooks extends AbstractMigration
 {
     /**
      * Change Method.
@@ -19,14 +19,10 @@ final class Ticket extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('ticket', ['id' => false, 'primary_key' => ['id']]);
+        $table = $this->table('read_books', ['id' => false, 'primary_key' => ['id']]);
         $table->addColumn('id', 'uuid')
-            ->addColumn('title', 'string')
-            ->addColumn('description', 'string')
-            ->addColumn('status', 'string')
-            ->addColumn('assignee', 'string')
-            ->addColumn('created_at', 'datetime')
-            ->addColumn('updated_at', 'datetime')
+            ->addColumn('isbn', 'string')
+            ->addColumn('read_at', 'datetime')
             ->create();
     }
 }
