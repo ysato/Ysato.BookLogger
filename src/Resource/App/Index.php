@@ -21,12 +21,17 @@ class Index extends ResourceObject
             ],
             'bl:read-book' => [
                 'href' => '/read-books/{id}',
-                'title' => 'The read book item',
                 'templated' => true,
             ],
             'bl:read-books' => [
                 'href' => '/read-books',
-                'title' => 'The read book list',
+            ],
+            'bl:wish-book' => [
+                'href' => '/wish-books/{id}',
+                'templated' => true,
+            ],
+            'bl:wish-books' => [
+                'href' => '/wish-books',
             ],
         ],
     ];

@@ -1,0 +1,9 @@
+{
+  "$id": "wish_books.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Collection of Wish Books",
+  "type": "array",
+  "items": {
+    "$ref": "wish_book.json"
+  }
+}

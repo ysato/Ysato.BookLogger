@@ -1,0 +1,21 @@
+{
+  "$id": "wish_book.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WishBook",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for a wish book."
+    },
+    "isbn": {
+      "type": "string",
+      "description": "The unique identifier for a book",
+      "minLength": 10,
+      "maxLength": 13
+    }
+  },
+  "required": [
+    "isbn"
+  ]
+}
