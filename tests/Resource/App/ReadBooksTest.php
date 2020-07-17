@@ -11,7 +11,7 @@ use Koriym\HttpConstants\StatusCode;
 use PHPUnit\Framework\TestCase;
 use Ysato\BookLogger\Injector;
 
-class TicketsTest extends TestCase
+class ReadBooksTest extends TestCase
 {
     private ResourceInterface $resource;
 
@@ -20,34 +20,22 @@ class TicketsTest extends TestCase
         $this->resource = Injector::getInstance('test-app')->getInstance(ResourceInterface::class);
     }
 
-    /**
-     * @return ResourceObject
-     */
-    public function testOnPost()
+    public function testOnPost(): ResourceObject
     {
-        $ro = $this->resource->post('app://self/tickets', [
-            'title' => 'title1',
-            'status' => 'status1',
-            'description' => 'description1',
-            'assignee' => 'assignee1',
-        ]);
+        $ro = $this->resource->post('app://self/read-books', ['isbn' => '9783161484100']);
         self::assertSame(StatusCode::CREATED, $ro->code);
-        self::assertStringContainsString('/ticket?id=', $ro->headers[ResponseHeader::LOCATION]);
+        self::assertStringContainsString('/read-book?id=', $ro->headers[ResponseHeader::LOCATION]);
 
         return $ro;
     }
 
     /**
-     * @return void
-     *
      * @depends testOnPost
      */
-    public function testOnGet(ResourceObject $ro)
+    public function testOnGet(ResourceObject $ro): void
     {
         $location = $ro->headers[ResponseHeader::LOCATION];
         $ro = $this->resource->get('app://self' . $location);
-        self::assertSame('title1', $ro->body['title']);
-        self::assertSame('description1', $ro->body['description']);
-        self::assertSame('assignee1', $ro->body['assignee']);
+        self::assertSame('9783161484100', $ro->body['isbn']);
     }
 }

@@ -1,4 +1,4 @@
-# /tickets
+# /read-books
 
 ## GET
 
@@ -8,10 +8,10 @@
 
 ### Response
 
-* array [tickets.json](../schema/tickets.json)
+* array [read_books.json](../schema/read_books.json)
 
 
-* [ticket.json](../schema/ticket.json)
+* [read_book.json](../schema/read_book.json)
                 
 ## POST
 
@@ -19,9 +19,7 @@
         
 | Name  | Type  | Description | Default | Required | 
 |-------|-------|-------------|---------|----------|          
-| title | string |  |  |  Required 
-| description | string |  |  |  Optional 
-| assignee | string |  |  |  Optional 
+| isbn | string |  |  |  Required 
 
 ### Response
 

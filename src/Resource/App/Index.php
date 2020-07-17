@@ -10,23 +10,23 @@ class Index extends ResourceObject
 {
     /** @var array<string, mixed> */
     public $body = [
-        'overview' => 'This is the Tutorial2 REST API',
-        'issue' => 'https://github.com/bearsunday/tutorial2/issues',
+        'overview' => 'This is the BookLogger REST API',
+        'issue' => 'https://github.com/ysato/Ysato.BookLogger/issues',
         '_links' => [
             'self' => ['href' => '/'],
             'curies' => [
                 'href' => 'rels/{rel}.html',
-                'name' => 'tk',
+                'name' => 'bl',
                 'templated' => true,
             ],
-            'tk:ticket' => [
-                'href' => '/tickets/{id}',
-                'title' => 'The ticket item',
+            'bl:read-book' => [
+                'href' => '/read-books/{id}',
+                'title' => 'The read book item',
                 'templated' => true,
             ],
-            'tk:tickets' => [
-                'href' => '/tickets',
-                'title' => 'The ticket list',
+            'bl:read-books' => [
+                'href' => '/read-books',
+                'title' => 'The read book list',
             ],
         ],
     ];

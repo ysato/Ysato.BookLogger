@@ -20,26 +20,26 @@ use Ray\Query\Annotation\Query;
 /**
  * @Cacheable()
  */
-class Tickets extends ResourceObject
+class ReadBooks extends ResourceObject
 {
     /** @var callable */
-    private $createTicket;
+    private $createReadBook;
     private NowInterface $now;
     private UuidInterface $uuid;
 
     /**
-     * @Named("createTicket=ticket_insert")
+     * @Named("createReadBook=read_book_insert")
      */
-    public function __construct(callable $createTicket, NowInterface $now, UuidInterface $uuid)
+    public function __construct(callable $createReadBook, NowInterface $now, UuidInterface $uuid)
     {
-        $this->createTicket = $createTicket;
+        $this->createReadBook = $createReadBook;
         $this->now = $now;
         $this->uuid = $uuid;
     }
 
     /**
-     * @JsonSchema(schema="tickets.json")
-     * @Query("ticket_list")
+     * @JsonSchema(schema="read_books.json")
+     * @Query("read_book_list")
      */
     public function onGet(): ResourceObject
     {
@@ -49,23 +49,19 @@ class Tickets extends ResourceObject
     /**
      * @ReturnCreatedResource()
      * @Transactional()
-     * @Purge(uri="app://self/tickets")
+     * @Purge(uri="app://self/read-books")
      */
-    public function onPost(string $title, string $description = '', string $assignee = ''): ResourceObject
+    public function onPost(string $isbn): ResourceObject
     {
         $id = (string) $this->uuid;
         $time = (string) $this->now;
-        ($this->createTicket)([
+        ($this->createReadBook)([
             'id' => $id,
-            'title' => $title,
-            'description' => $description,
-            'assignee' => $assignee,
-            'status' => '',
-            'created_at' => $time,
-            'updated_at' => $time,
+            'isbn' => $isbn,
+            'read_at' => $time,
         ]);
         $this->code = StatusCode::CREATED;
-        $this->headers[ResponseHeader::LOCATION] = "/ticket?id={$id}";
+        $this->headers[ResponseHeader::LOCATION] = "/read-book?id=$id";
 
         return $this;
     }
